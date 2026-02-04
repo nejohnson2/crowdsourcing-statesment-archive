@@ -148,7 +148,7 @@ async function loadNextPage() {
         await loadImage(data.image_url);
     } catch (err) {
         console.error("Failed to load page:", err);
-        document.getElementById("loading").textContent = "Error loading page. Please try again.";
+        document.getElementById("loading-text").textContent = "Error loading page. Please try again.";
     }
 }
 
@@ -460,6 +460,17 @@ function deleteSelected() {
 }
 
 // ---------------------------------------------------------------
+// Skip
+// ---------------------------------------------------------------
+
+function skipPage() {
+    if (currentPageId) {
+        skippedPages.push(currentPageId);
+    }
+    loadNextPage();
+}
+
+// ---------------------------------------------------------------
 // Submission
 // ---------------------------------------------------------------
 
@@ -492,9 +503,9 @@ async function submitAnnotations() {
         if (resp.ok) {
             document.getElementById("annotate-ui").style.display = "none";
             document.getElementById("loading").style.display = "";
-            document.getElementById("loading").textContent = "Saved! Loading next page…";
+            document.getElementById("loading-text").textContent = "Saved! Loading next page…";
             setTimeout(() => {
-                document.getElementById("loading").textContent = "Loading next page…";
+                document.getElementById("loading-text").textContent = "Loading next page…";
                 loadNextPage();
             }, 800);
         } else {

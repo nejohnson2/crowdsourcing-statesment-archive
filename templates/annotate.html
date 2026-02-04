@@ -6,7 +6,10 @@
 {% endblock %}
 
 {% block content %}
-<div id="loading" class="msg-info">Loading next page…</div>
+<div id="loading" class="msg-info">
+    <div class="spinner"></div>
+    <span id="loading-text">Loading next page…</span>
+</div>
 <div id="no-pages" class="msg-info" style="display:none;">
     No more pages available. Thank you for your contributions!
     <br><br><a href="/" class="btn btn-primary">Return Home</a>
