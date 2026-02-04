@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Newspaper Annotator{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Help Us Map History</h1>
+    <p>
+        We're building a structured archive of a university newspaper spanning
+        over 70 years. Your task: look at a scanned page and draw boxes around
+        articles, advertisements, photographs, and other content. Every
+        contribution helps preserve and understand this collection.
+    </p>
+    <a href="/annotate" class="btn btn-primary" style="font-size:1.1rem;padding:0.8rem 2rem;">
+        Start Annotating
+    </a>
+</div>
+
+<div class="card" style="max-width:700px;margin:0 auto;">
+    <h3 style="margin-bottom:0.5rem;">What You'll Do</h3>
+    <ol style="margin-left:1.2rem;line-height:2;">
+        <li>View a randomly selected scanned newspaper page</li>
+        <li>Draw rectangles around distinct content regions (articles, ads, images, etc.)</li>
+        <li>Classify each region and optionally enter its headline</li>
+        <li>Enter the publication date if it's visible on the page</li>
+        <li>Submit and move on to the next page</li>
+    </ol>
+    <p style="margin-top:1rem;color:#555;">
+        Each page is reviewed by multiple volunteers to ensure accuracy.
+        No account needed — just click the button above and start helping!
+    </p>
+</div>
+{% endblock %}

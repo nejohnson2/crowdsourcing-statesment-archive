@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard — Newspaper Annotator{% endblock %}
+
+{% block content %}
+<h1 style="margin-bottom:1rem;">Admin Dashboard</h1>
+
+<div id="stats-loading" class="msg-info">Loading statistics…</div>
+
+<div id="stats-ui" style="display:none;">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-value" id="stat-total">—</div>
+            <div class="stat-label">Total Pages</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-complete">—</div>
+            <div class="stat-label">Complete (10+ reviews)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-in-progress">—</div>
+            <div class="stat-label">In Progress (1–9)</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-not-started">—</div>
+            <div class="stat-label">Not Started</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-annotations">—</div>
+            <div class="stat-label">Total Annotations</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-value" id="stat-sessions">—</div>
+            <div class="stat-label">Unique Volunteers</div>
+        </div>
+    </div>
+
+    <h3 style="margin-bottom:0.5rem;">Completion Progress</h3>
+    <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="progress-bar" style="width:0%;">0%</div>
+    </div>
+
+    <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+            <h3>Pages</h3>
+            <a href="/api/admin/export" class="btn btn-sm btn-primary" target="_blank">Export JSON</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th onclick="sortBy('id')">ID</th>
+                    <th onclick="sortBy('filename')">Filename</th>
+                    <th onclick="sortBy('annotation_count')">Annotations</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="pages-tbody"></tbody>
+        </table>
+        <div class="pagination" id="pagination"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/admin.js"></script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Annotate — Newspaper Annotator{% endblock %}
+
+{% block head %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div id="loading" class="msg-info">Loading next page…</div>
+<div id="no-pages" class="msg-info" style="display:none;">
+    No more pages available. Thank you for your contributions!
+    <br><br><a href="/" class="btn btn-primary">Return Home</a>
+</div>
+
+<div id="annotate-ui" style="display:none;">
+    <div class="annotate-layout">
+        <!-- Left: subtle instructions -->
+        <div class="guide-panel">
+            <div class="guide-content">
+                <div class="guide-title">Quick Guide</div>
+                <div class="guide-step"><span class="guide-key">Draw</span> Click &amp; drag to outline a region</div>
+                <div class="guide-step"><span class="guide-key">Select</span> Click a box to move or resize it</div>
+                <div class="guide-step"><span class="guide-key">Classify</span> Pick type &amp; enter headline</div>
+                <div class="guide-step"><span class="guide-key">Scroll</span> Mouse wheel to zoom in/out</div>
+                <div class="guide-step"><span class="guide-key">Pan</span> Hold Alt + drag when zoomed</div>
+                <div class="guide-step"><span class="guide-key">Date</span> Enter pub date if visible</div>
+                <div class="guide-step"><span class="guide-key">Submit</span> Save when all regions marked</div>
+            </div>
+        </div>
+
+        <!-- Center: canvas -->
+        <div class="canvas-panel">
+            <div class="toolbar">
+                <span class="page-filename" id="page-filename"></span>
+                <span style="flex:1;"></span>
+                <button class="btn btn-sm btn-primary" id="btn-draw" title="Draw mode (D)">Draw</button>
+                <button class="btn btn-sm" id="btn-select" title="Select/edit mode (S)">Select</button>
+                <button class="btn btn-sm btn-danger" id="btn-delete" title="Delete selected (Del)">Delete</button>
+                <span class="toolbar-sep"></span>
+                <button class="btn btn-sm" id="btn-zoom-in" title="Zoom in (+)">+</button>
+                <button class="btn btn-sm" id="btn-zoom-out" title="Zoom out (-)">−</button>
+                <button class="btn btn-sm" id="btn-zoom-reset" title="Reset zoom (0)">Fit</button>
+                <span class="zoom-level" id="zoom-level">100%</span>
+            </div>
+            <div class="canvas-wrapper" id="canvas-wrapper">
+                <canvas id="annotation-canvas"></canvas>
+            </div>
+        </div>
+
+        <!-- Right: regions sidebar -->
+        <div class="sidebar-panel">
+            <div class="card">
+                <div class="meta-field">
+                    <label for="pub-date">Publication Date</label>
+                    <input type="text" id="pub-date" placeholder="e.g. October 15, 1967">
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 style="margin-bottom:0.75rem;">Regions (<span id="region-count">0</span>)</h3>
+                <div id="region-list"></div>
+                <p id="no-regions" style="color:#999;font-size:0.9rem;">
+                    Draw a box on the image to create a region.
+                </p>
+            </div>
+
+            <button class="btn btn-success" id="btn-submit" style="width:100%;" disabled>
+                Submit Annotations
+            </button>
+            <button class="btn btn-sm" id="btn-skip" style="width:100%;margin-top:0.5rem;">
+                Skip This Page
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/annotator.js"></script>
+{% endblock %}

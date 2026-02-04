@@ -1,0 +1,318 @@
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+    background: #1a365d;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-brand {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.nav-links a {
+    color: #cbd5e0;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+}
+.nav-links a:hover { color: #fff; }
+
+/* ---------- Container ---------- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+/* Wider container when annotating */
+.container:has(.annotate-layout) {
+    max-width: 1500px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.btn-primary { background: #2b6cb0; color: #fff; }
+.btn-primary:hover { background: #2c5282; }
+.btn-success { background: #38a169; color: #fff; }
+.btn-success:hover { background: #2f855a; }
+.btn-danger { background: #e53e3e; color: #fff; }
+.btn-danger:hover { background: #c53030; }
+.btn-sm { padding: 0.35rem 0.8rem; font-size: 0.85rem; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Cards ---------- */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ---------- Hero / Landing ---------- */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+}
+.hero h1 { font-size: 2rem; margin-bottom: 0.75rem; }
+.hero p { font-size: 1.1rem; color: #555; max-width: 600px; margin: 0 auto 1.5rem; }
+
+/* ---------- Annotation Page ---------- */
+.annotate-layout {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+/* Left guide panel */
+.guide-panel {
+    width: 160px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 1rem;
+}
+.guide-content {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.75rem;
+}
+.guide-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a0aec0;
+    margin-bottom: 0.6rem;
+}
+.guide-step {
+    font-size: 0.78rem;
+    color: #718096;
+    margin-bottom: 0.45rem;
+    line-height: 1.4;
+}
+.guide-step:last-child { margin-bottom: 0; }
+.guide-key {
+    display: inline-block;
+    font-weight: 600;
+    color: #4a5568;
+    min-width: 3rem;
+}
+
+/* Center canvas */
+.canvas-panel {
+    flex: 1;
+    min-width: 0;
+}
+.canvas-wrapper {
+    background: #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+.canvas-wrapper canvas {
+    display: block;
+}
+
+/* Right sidebar */
+.sidebar-panel {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+/* ---------- Toolbar ---------- */
+.toolbar {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+.toolbar-sep {
+    width: 1px;
+    height: 20px;
+    background: #cbd5e0;
+    margin: 0 0.25rem;
+}
+.page-filename {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 0.95rem;
+}
+.zoom-level {
+    font-size: 0.8rem;
+    color: #718096;
+    min-width: 3rem;
+    text-align: center;
+}
+
+/* ---------- Region list ---------- */
+.region-item {
+    background: #f7fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+.region-item .region-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+.region-item label {
+    display: block;
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.2rem;
+}
+.region-item select,
+.region-item input[type="text"] {
+    width: 100%;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+}
+
+/* ---------- Page metadata ---------- */
+.meta-field { margin-bottom: 1rem; }
+.meta-field label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+.meta-field input {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+/* ---------- Admin ---------- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.stat-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 1.25rem;
+    text-align: center;
+}
+.stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2b6cb0;
+}
+.stat-card .stat-label {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-top: 0.25rem;
+}
+.progress-bar-outer {
+    background: #e2e8f0;
+    border-radius: 8px;
+    height: 24px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+.progress-bar-inner {
+    background: #38a169;
+    height: 100%;
+    transition: width 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 2rem;
+}
+
+/* ---------- Table ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+th {
+    background: #f7fafc;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #4a5568;
+    cursor: pointer;
+}
+th:hover { color: #2b6cb0; }
+td { font-size: 0.9rem; }
+
+.status-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+.status-pending { background: #fed7d7; color: #c53030; }
+.status-in_progress { background: #fefcbf; color: #b7791f; }
+.status-complete { background: #c6f6d5; color: #276749; }
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+/* ---------- Messages ---------- */
+.msg-info {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+    .guide-panel { display: none; }
+}
+@media (max-width: 900px) {
+    .annotate-layout {
+        flex-direction: column;
+    }
+    .sidebar-panel {
+        width: 100%;
+    }
+}
